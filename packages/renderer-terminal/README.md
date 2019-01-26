@@ -6,7 +6,7 @@ Render created map to terminal.
 
 As far terminal has only 256 colors a basic color mapping is performed via [color difference calculation](https://en.wikipedia.org/wiki/Color_difference):
 
-- Euclidean
+- Euclidean (default)
 
 ```ts
 import { mapgen } from '@mapgen/mapgen';
@@ -18,6 +18,8 @@ const renderer = new TerminalRenderer(terminal);
 mapgen(renderer);
 ```
 
+![Rendered to console](/images/terminal.euclidean.png)
+
 - CIEDE2000
 
 ```ts
@@ -28,9 +30,6 @@ import { terminal } from 'terminal-kit';
 const renderer = new TerminalRenderer(terminal, new CIEDE2000ColorResolver());
 
 mapgen(renderer);
-
 ```
 
-## Result
-
-![Rendered ro console](/images/terminal.png)
+![Rendered to console](/images/terminal.ciede2000.png)
