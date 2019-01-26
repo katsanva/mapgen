@@ -1,6 +1,6 @@
 {
   "name": "@mapgen/renderer-terminal",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "Terminal renderer for pixel-art map generator mapgen",
   "keywords": [
     "terminal",
@@ -36,7 +36,7 @@
   },
   "homepage": "https://github.com/katsanva/mapgen#readme",
   "devDependencies": {
-    "@mapgen/mapgen": "^1.1.0",
+    "@mapgen/mapgen": "^1.1.1",
     "@types/color-diff": "^1.1.0",
     "terminal-kit": "^1.26.10"
   },
