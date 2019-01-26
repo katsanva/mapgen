@@ -1,15 +1,7 @@
-# `@mapgen/mapgen`
-
-Generate random map.
-
-## Usage
-
-```ts
 import { mapgen } from '@mapgen/mapgen';
-import { TerminalRenderer } from '@mapgen/renderer-terminal';
+import { TerminalRenderer } from './TerminalRenderer';
 import { terminal } from 'terminal-kit';
 
 const renderer = new TerminalRenderer(terminal);
 
 mapgen(renderer);
-```

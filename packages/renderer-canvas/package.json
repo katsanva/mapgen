@@ -22,6 +22,7 @@
   },
   "scripts": {
     "prepublish": "tsc --declaration",
+    "example": "tsc -p ./tsconfig.example.json",
     "test": "echo \"Error: run tests from root\" && exit 1"
   },
   "bugs": {

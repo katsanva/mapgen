@@ -1,6 +1,6 @@
 # `@mapgen/renderer-terminal`
 
-> TODO: description
+Render created map to terminal.
 
 ## Usage
 
@@ -12,5 +12,4 @@ import { terminal } from 'terminal-kit';
 const renderer = new TerminalRenderer(terminal);
 
 mapgen(renderer);
-
 ```
