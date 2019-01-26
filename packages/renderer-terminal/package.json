@@ -1,6 +1,6 @@
 {
   "name": "@mapgen/renderer-terminal",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Terminal renderer for mapgen",
   "keywords": [
     "terminal",
