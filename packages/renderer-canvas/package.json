@@ -1,6 +1,6 @@
 {
   "name": "@mapgen/renderer-canvas",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "description": "Canvas renderer for pixel-art map generator mapgen",
   "keywords": [
     "canvas",
@@ -36,7 +36,7 @@
   },
   "homepage": "https://github.com/katsanva/mapgen#readme",
   "devDependencies": {
-    "@mapgen/mapgen": "^1.0.0"
+    "@mapgen/mapgen": "^1.0.2"
   },
   "peerDependencies": {
     "@mapgen/mapgen": "*"
