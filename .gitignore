@@ -129,3 +129,6 @@ fabric.properties
 
 config/local*
 dist
+
+src/*.js
+src/**/*.js

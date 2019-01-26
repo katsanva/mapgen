@@ -1,3 +1,5 @@
+import { TerrainType } from './TerrainType.enum';
+
 export class Terrain {
   public latitudeThreshold: ITreshold;
 
@@ -15,27 +17,25 @@ export class Terrain {
     public color: string,
     public propagationRate: number,
     { min = 0, max }: IMaxTreshold,
-    public type: 'land' | 'water',
+    public type: TerrainType,
     public typeBindStrength: number,
   ) {
     this.latitudeThreshold = { min, max };
-
-    // Todo, propigation rates, latitudes, climates, wildlife, different shapes, gradients, and colors
+    // TODO: propigation rates, latitudes, climates, wildlife, different shapes, gradients, and colors
   }
+
   // Determines whether the tile propagates
   public propagates(currentLatitude: number) {
     if (currentLatitude < this.latitudeThreshold.min || currentLatitude > this.latitudeThreshold.max) {
       return false;
     }
+
     return this.propagationRate > Math.random();
   }
 
   // Determines whether the type holds
   public typeStaysSame() {
-    if (this.typeBindStrength > Math.random()) {
-      return true;
-    }
-    return false;
+    return this.typeBindStrength > Math.random();
   }
 }
 

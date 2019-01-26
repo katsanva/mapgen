@@ -1,6 +1,14 @@
 import { Tile } from './Tile';
 import { Terrain } from './Terrain';
 import { randRange } from './randRange';
+import { TerrainType } from './TerrainType.enum';
+
+enum Direction {
+  Up = 1,
+  Right,
+  Down,
+  Left,
+}
 
 export class World {
   private worldMap: Tile[][];
@@ -24,16 +32,9 @@ export class World {
     public cols: number,
     public width: number,
     public height: number,
-    public terrainList: any[],
+    public terrainList: Terrain[],
     public c: CanvasRenderingContext2D,
   ) {
-    this.rows = rows;
-    this.cols = cols;
-    this.width = width;
-    this.height = height;
-    this.terrainList = terrainList;
-    this.c = c;
-
     // Generates a two-dimensional array for the worldMap
     this.worldMap = new Array(this.rows);
     for (let i = 0; i < this.rows; i++) {
@@ -44,8 +45,8 @@ export class World {
     this.typeLand = [];
     this.typeWater = [];
 
-    for (const i of terrainList) {
-      if (terrainList[i].type === 'land') {
+    for (const i in terrainList) {
+      if (terrainList[i].type === TerrainType.Land) {
         this.typeLand.push(terrainList[i]);
       } else {
         this.typeWater.push(terrainList[i]);
@@ -114,23 +115,25 @@ export class World {
     do {
       if (this.movePossible(direction, startRow, startCol)) {
         switch (direction) {
-          case 1:
+          case Direction.Up:
             this.placeTiles(startRow - 1, startCol, this.worldMap, nextTerrain);
             break;
-          case 2:
+          case Direction.Right:
             this.placeTiles(startRow, startCol + 1, this.worldMap, nextTerrain);
             break;
-          case 3:
+          case Direction.Down:
             this.placeTiles(startRow + 1, startCol, this.worldMap, nextTerrain);
             break;
-          case 4:
+          case Direction.Left:
             this.placeTiles(startRow, startCol - 1, this.worldMap, nextTerrain);
             break;
           default:
             throw new Error('Unable to create a new tile!');
         }
       }
+
       direction++;
+
       if (direction > 4) {
         direction %= 4;
       }
@@ -145,7 +148,7 @@ export class World {
       nextTerrain = terrain;
     } else {
       if (terrain.typeStaysSame()) {
-        if (terrain.type === 'land') {
+        if (terrain.type === TerrainType.Land) {
           nextTerrain = this.typeLand[randRange(0, this.typeLand.length - 1)];
         } else {
           nextTerrain = this.typeWater[randRange(0, this.typeWater.length - 1)];
@@ -163,19 +166,19 @@ export class World {
   }
 
   // Checks to see if a move is possible in a given direction
-  private movePossible(direction: number, rowPos: number, colPos: number) {
+  private movePossible(direction: Direction, rowPos: number, colPos: number) {
     switch (direction) {
       // First, check the rectangular bounds of the map, then check if there's already a tile in place
-      case 1: // Up
+      case Direction.Up: // Up
         return rowPos - 1 >= 0 && !(this.worldMap[rowPos - 1][colPos] instanceof Tile);
-      case 2: // Right
+      case Direction.Right: // Right
         return colPos + 1 <= this.cols - 1 && !(this.worldMap[rowPos][colPos + 1] instanceof Tile);
-      case 3: // Down
+      case Direction.Down: // Down
         return rowPos + 1 <= this.rows - 1 && !(this.worldMap[rowPos + 1][colPos] instanceof Tile);
-      case 4: // Left
+      case Direction.Left: // Left
         return colPos - 1 >= 0 && !(this.worldMap[rowPos][colPos - 1] instanceof Tile);
       default:
-        throw new Error('Everthing is SNAFU');
+        throw new Error('Everything is SNAFU');
     }
   }
 
