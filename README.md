@@ -12,4 +12,4 @@ View in [terminal](packages/renderer-terminal):
 
 View in [canvas](packages/renderer-canvas):
 
-![Rendered to cnvas](images/canvas.png)
+![Rendered to cфnvas](images/canvas.png)

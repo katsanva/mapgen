@@ -13,3 +13,7 @@ const renderer = new TerminalRenderer(terminal);
 
 mapgen(renderer);
 ```
+
+## Result
+
+![Rendered ro console](/images/terminal.png)

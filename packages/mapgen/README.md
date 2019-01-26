@@ -13,3 +13,13 @@ const renderer = new TerminalRenderer(terminal);
 
 mapgen(renderer);
 ```
+
+## Result
+
+View in [terminal](/packages/renderer-terminal):
+
+![Rendered ro console](/images/terminal.png)
+
+View in [canvas](/packages/renderer-canvas):
+
+![Rendered to canvas](/images/canvas.png)

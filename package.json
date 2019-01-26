@@ -21,6 +21,6 @@
     "typescript": "^3.2.4"
   },
   "author": "",
-  "license": "ISC",
+  "license": "MIT",
   "dependencies": {}
 }

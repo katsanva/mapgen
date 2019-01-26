@@ -13,3 +13,7 @@ const renderer = new CanvasRenderer(canvas);
 
 mapgen(renderer);
 ```
+
+## Result
+
+![Rendered to canvas](/images/canvas.png)
