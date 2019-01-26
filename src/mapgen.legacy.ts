@@ -1,24 +1,16 @@
-// Clears the canvas
-function clear() {
-  c.fillStyle = "violet";
-  c.fillRect(0, 0, WIDTH, HEIGHT);
-}
-
-// Returns a random range
-function randRange(min, max) {
-  return Math.floor(Math.random() * (max - min + 1)) + min;
-}
+import { Terrain } from './Terrain';
+import { World } from './World';
+import { randRange } from './randRange';
 
 /*********************************/
 
-
 // Sets up the canvas
-var canvas = document.getElementById("canvas"),
-  c = canvas.getContext("2d"),
-  HEIGHT = canvas.height,
-  WIDTH = canvas.width,
-  tileHeight = 2,
-  tileWidth = 2;
+const canvas = document.getElementById("canvas") as HTMLCanvasElement;
+const c = canvas.getContext("2d");
+const HEIGHT = canvas.height;
+const WIDTH = canvas.width;
+const tileHeight = 2
+const tileWidth = 2;
 
 // Available Terrains
 var terrains = [];
@@ -40,13 +32,23 @@ terrains.push(new Terrain("tundra", "#221edd", 0.89, {min : 0.4, max : 0.45}, "l
 terrains.push(new Terrain("icy waters", "434d7e", 0.9, {min : 0.43, max : 0.48},"water", 1));
 terrains.push(new Terrain("ice caps", "white", 0.99, {min : 0.45, max : 0.5}, "water", 1));
 
+if (!c) {
+  throw new Error('Canvas #canvas not found');
+}
+
 var worldMap = new World(HEIGHT / tileHeight, WIDTH / tileWidth, tileWidth, tileHeight, terrains, c);
 
 // Make the map!
-clear();
+clear(c);
 for (var i = 0; i < 500; i++) {
 	worldMap.generateMap(
 		randRange(0, worldMap.rows - 1),
 		randRange(0, worldMap.cols - 1));
 }
 worldMap.fill();
+
+// Clears the canvas
+function clear(c: CanvasRenderingContext2D) {
+  c.fillStyle = "violet";
+  c.fillRect(0, 0, WIDTH, HEIGHT);
+}

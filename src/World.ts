@@ -1,18 +1,27 @@
+import {Tile} from './Tile';
+import {Terrain} from './Terrain'
+import { randRange } from './randRange';
+
 // World Class
 
-function World(rows, // {Integer} the number of rows in the world
-  cols, // {Integer} the numbers of columns in the world
-  tile_width, // {Integer} the width of each tile to display on the canvas
-  tile_height, // {Integer} the height of each tile to display on the canvas
-  terrainList, // {Array of Objects} an array of terrainTypes which determine the map
-  context) { // {Canvas Context} on which the world will be drawn
+export class World{
+  worldMap: Tile[][];
+  typeLand: any[];
+  typeWater: any[];
+
+  constructor(public rows: number, // {Integer} the number of rows in the world
+  public cols: number, // {Integer} the numbers of columns in the world
+  public tile_width: number, // {Integer} the width of each tile to display on the canvas
+  public tile_height: number, // {Integer} the height of each tile to display on the canvas
+  public terrainList: any[], // {Array of Objects} an array of terrainTypes which determine the map
+  public c: CanvasRenderingContext2D) { // {Canvas Context} on which the world will be drawn
 
   this.rows = rows;
   this.cols = cols;
   this.tile_width = tile_width;
   this.tile_height = tile_height;
   this.terrainList = terrainList;
-  this.c = context;
+  this.c = c;
 
   // Generates a two-dimensional array for the worldMap
   this.worldMap = new Array(this.rows);
@@ -30,47 +39,47 @@ function World(rows, // {Integer} the number of rows in the world
     } else {
       this.typeWater.push(terrainList[i]);
     }
+  
   }
 }
 
-World.prototype = {
   // The remaining calls for the generateMap() function
-  callsRemaining : 0,
+  private callsRemaining = 0;
 
   // Converts a colPos to the canvas coordinate x of a Tile
-  colPostoCanvasX: function(colPos) {
+  colPostoCanvasX(colPos: number) {
     return colPos * this.tile_width;
-  },
+  }
 
   // Converts a rowPos to the canvas coordinate y of a Tile
-  rowPostoCanvasY: function(rowPos) {
+  rowPostoCanvasY(rowPos: number) {
     return rowPos * this.tile_height;
-  },
+  }
 
   // Converts the canvas coordinate x of a Tile to colPos
-  canvasXtocolPos: function(canvasX) {
+  canvasXtocolPos(canvasX: number) {
     return canvasX / this.tile_height;
-  },
+  }
 
   // Converts the canvas coordinate y of a Tile to rowPos
-  canvasYtorowPos: function(canvasY) {
+  canvasYtorowPos(canvasY: number) {
     return canvasY / this.tile_height;
-  },
+  }
 
   // Generates a new worldmap
-  generateMap: function(startRow, startCol) {
+  generateMap(startRow: number, startCol: number) {
     // Check if there's already a Tile there
     if (this.worldMap[startRow][startCol] instanceof Tile) {
-      return false;
+      return;
     }
     this.callsRemaining = 1000;
-    currentLatitude = this.currentLatitude(startRow);
+    const currentLatitude = this.currentLatitude(startRow);
     var startTile = this.chooseAnyTile(currentLatitude);
     this.placeTiles(startRow, startCol, this.worldMap, startTile);
-  },
+  }
 
   // Recursive function which first checks if a tile can be placed
-  placeTiles: function(startRow, startCol, map, terrain) {
+  placeTiles(startRow: number, startCol: number, map: any, terrain: Terrain) {
     // Lower the remaining calls available
     this.callsRemaining--;
     // Find the current latitude
@@ -111,10 +120,10 @@ World.prototype = {
       }
       // when direction reaches the stop direction, stop attempting to create tiles
     } while (direction !== sdirection && this.callsRemaining > 0);
-  },
+  }
 
   // Chooses the next Tile to make
-  chooseNextTerrain : function(currentLatitude, terrain) {
+  chooseNextTerrain (currentLatitude: number, terrain: Terrain) {
     var nextTerrain;
     if (terrain.propagates(currentLatitude)) {
         nextTerrain = terrain;
@@ -133,10 +142,10 @@ World.prototype = {
       }
     }
     return nextTerrain;
-  },
+  }
 
   // Checks to see if a move is possible in a given direction
-  movePossible: function(direction, rowPos, colPos) {
+  movePossible(direction: number, rowPos: number, colPos: number) {
     switch (direction) {
       // First, check the rectangular bounds of the map, then check if there's already a tile in place
       case (1): // Up
@@ -150,30 +159,30 @@ World.prototype = {
       default:
         throw new Error("Everthing is SNAFU");
     }
-  },
+  }
 
   // Checks to see if the map is full
-  fill : function() {
+  fill () {
     for (var i = 0; i < this.rows; i++) {
       for (var j = 0; j < this.cols; j++){
         this.generateMap(i, j);
       }
     }
-  },
+  }
 
   // Chooses any viable tile
-  chooseAnyTile : function (currentLatitude) {
+  chooseAnyTile  (currentLatitude: number) {
     var tile;
     do {
       tile = this.terrainList[randRange(0, this.terrainList.length - 1)];
       } while (currentLatitude < tile.latitudeThreshold.min ||
         currentLatitude > tile.latitudeThreshold.max);
     return tile;
-  },
+  }
 
   // Finds the current latitude based off the given row in the range 0-1 as the threshold from the equator
   // Only at the equator is a 0 and everywhere on the map is a 0.5 (+- 0.5 from the equator)
-  currentLatitude : function (rowPos) {
+  currentLatitude  (rowPos: number) {
     var latitude = rowPos / this.rows;
     return latitude < 0.5 ? 0.5 - latitude : latitude - 0.5;
   }
