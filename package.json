@@ -11,17 +11,15 @@
   },
   "devDependencies": {
     "@types/node": "^10.12.18",
-    "@types/terminal-kit": "^1.26.0",
     "nodemon": "^1.18.9",
     "prettier": "^1.16.1",
     "ts-node": "^8.0.1",
     "tslint": "^5.12.1",
     "tslint-config-prettier": "^1.17.0",
+    "tslint-config-security": "^1.15.0",
     "typescript": "^3.2.4"
   },
   "author": "",
   "license": "ISC",
-  "dependencies": {
-    "terminal-kit": "^1.26.10"
-  }
+  "dependencies": {}
 }
