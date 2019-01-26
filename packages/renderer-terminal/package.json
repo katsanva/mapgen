@@ -1,8 +1,13 @@
 {
   "name": "@mapgen/renderer-terminal",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "description": "Terminal renderer for mapgen",
-  "keywords": ["terminal", "map", "generator", "renderer"],
+  "keywords": [
+    "terminal",
+    "map",
+    "generator",
+    "renderer"
+  ],
   "author": "katsanva <this.is.ftm@gmail.com>",
   "license": "ISC",
   "main": "lib/TerminalRenderer.js",
@@ -29,7 +34,7 @@
   },
   "homepage": "https://github.com/katsanva/mapgen#readme",
   "devDependencies": {
-    "@mapgen/mapgen": "*",
+    "@mapgen/mapgen": "^1.0.0",
     "terminal-kit": "^1.26.10"
   },
   "peerDependencies": {
