@@ -1,11 +1,12 @@
 {
   "name": "@mapgen/renderer-terminal",
   "version": "1.0.1",
-  "description": "Terminal renderer for mapgen",
+  "description": "Terminal renderer for pixel-art map generator mapgen",
   "keywords": [
     "terminal",
     "map",
     "generator",
+    "pixel-art",
     "renderer"
   ],
   "author": "katsanva <this.is.ftm@gmail.com>",

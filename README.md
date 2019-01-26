@@ -1,6 +1,6 @@
 # @mapgen/mapgen
 
-Generate random map.
+Generate random pixel map.
 
 ## @mapgen/renderer-terminal
 
