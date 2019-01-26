@@ -1,8 +1,8 @@
-import { IRenderer } from './interfaces/IRenderer';
-import { Tile } from './Tile';
+import { IRenderer } from '@mapgen/mapgen/lib/interfaces/IRenderer';
+import { Tile } from '@mapgen/mapgen/lib/Tile';
 import { Terminal, ScreenBuffer } from 'terminal-kit';
 
-import colors from './colors.json';
+import colors from '../colors.json';
 
 const DEFAULT_TILE_SIZE = 1;
 const DEFAULT_COLOR = 213;

@@ -1,5 +1,5 @@
-import { IRenderer } from './interfaces/IRenderer';
-import { Tile } from './Tile';
+import { IRenderer } from '@mapgen/mapgen/lib/interfaces/IRenderer';
+import { Tile } from '@mapgen/mapgen/lib/Tile';
 
 const DEFAULT_TILE_SIZE = 2;
 
