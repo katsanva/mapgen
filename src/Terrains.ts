@@ -16,7 +16,7 @@ terrainList.push(new Terrain('verdent plains', '#72e33a', 0.79, { min: 0.05, max
 terrainList.push(new Terrain('plains', '#47c134', 0.99, { min: 0.15, max: 0.35 }, TerrainType.Land, 1));
 terrainList.push(new Terrain('forest', '#33FF44', 0.78, { min: 0.1, max: 0.35 }, TerrainType.Land, 1));
 terrainList.push(new Terrain('thick forest', '#44ee33', 0.95, { min: 0.07, max: 0.4 }, TerrainType.Land, 1));
-terrainList.push(new Terrain('desert', 'beige', 0.75, { max: 0.08 }, TerrainType.Land, 0.9));
+terrainList.push(new Terrain('desert', '#f5f5dc', 0.75, { max: 0.08 }, TerrainType.Land, 0.9));
 terrainList.push(new Terrain('tundra', '#221edd', 0.89, { min: 0.4, max: 0.45 }, TerrainType.Land, 1));
-terrainList.push(new Terrain('icy waters', '434d7e', 0.9, { min: 0.43, max: 0.48 }, TerrainType.Land, 1));
-terrainList.push(new Terrain('ice caps', '#fff', 0.99, { min: 0.45, max: 0.5 }, TerrainType.Land, 1));
+terrainList.push(new Terrain('icy waters', '#c5cefd', 0.9, { min: 0.43, max: 0.48 }, TerrainType.Land, 1));
+terrainList.push(new Terrain('ice caps', '#ffffff', 0.99, { min: 0.45, max: 0.5 }, TerrainType.Land, 1));
