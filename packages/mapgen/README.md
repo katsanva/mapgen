@@ -18,7 +18,7 @@ mapgen(renderer);
 
 View in [terminal](/packages/renderer-terminal):
 
-![Rendered ro console](/images/terminal.png)
+![Rendered to console](/images/terminal.euclidean.png)
 
 View in [canvas](/packages/renderer-canvas):
 
