@@ -1,10 +1,16 @@
 import { IRenderer } from './interfaces/IRenderer';
 import { Tile } from './Tile';
 
+const DEFAULT_TILE_SIZE = 2;
+
 export class CanvasRenderer implements IRenderer {
   private output: CanvasRenderingContext2D;
 
-  constructor(private target: HTMLCanvasElement) {
+  constructor(
+    private target: HTMLCanvasElement,
+    public tileHeight: number = DEFAULT_TILE_SIZE,
+    public tileWidth: number = DEFAULT_TILE_SIZE,
+  ) {
     const context = target.getContext('2d');
 
     if (!context) {
@@ -12,6 +18,14 @@ export class CanvasRenderer implements IRenderer {
     }
 
     this.output = context;
+  }
+
+  get height() {
+    return this.target.height;
+  }
+
+  get width() {
+    return this.target.width;
   }
 
   public render(tile: Tile) {

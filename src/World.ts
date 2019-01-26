@@ -2,6 +2,8 @@ import { Tile } from './Tile';
 import { Terrain } from './Terrain';
 import { randRange } from './randRange';
 import { TerrainType } from './TerrainType.enum';
+import { IRenderer } from './interfaces/IRenderer';
+import { terrainList } from './Terrains';
 
 enum Direction {
   Up = 1,
@@ -11,9 +13,14 @@ enum Direction {
 }
 
 export class World {
+  public height: number;
+  public width: number;
+  public rows: number;
+  public cols: number;
+
   private worldMap: Tile[][];
-  private typeLand: any[];
-  private typeWater: any[];
+  private typeLand: Terrain[];
+  private typeWater: Terrain[];
 
   // The remaining calls for the generateMap() function
   private callsRemaining = 0;
@@ -25,18 +32,17 @@ export class World {
    * @param width {Integer} the width of each tile to display on the canvas
    * @param height {Integer} the height of each tile to display on the canvas
    * @param terrainList {Array of Objects} an array of terrainTypes which determine the map
-   * @param c {Canvas Context} on which the world will be drawn
+   * @param renderer {IRenderer} on which the world will be drawn
    */
-  constructor(
-    public rows: number,
-    public cols: number,
-    public width: number,
-    public height: number,
-    public terrainList: Terrain[],
-    public c: CanvasRenderingContext2D,
-  ) {
+  constructor(public renderer: IRenderer) {
+    this.rows = renderer.height / renderer.tileHeight;
+    this.cols = renderer.width / renderer.tileWidth;
+    this.height = renderer.tileHeight;
+    this.width = renderer.tileWidth;
+
     // Generates a two-dimensional array for the worldMap
     this.worldMap = new Array(this.rows);
+
     for (let i = 0; i < this.rows; i++) {
       this.worldMap[i] = new Array(this.cols);
     }
@@ -89,9 +95,11 @@ export class World {
     if (this.worldMap[startRow][startCol] instanceof Tile) {
       return;
     }
+
     this.callsRemaining = 1000;
     const currentLatitude = this.currentLatitude(startRow);
     const startTile = this.chooseAnyTile(currentLatitude);
+
     this.placeTiles(startRow, startCol, this.worldMap, startTile);
   }
 
@@ -102,9 +110,10 @@ export class World {
     // Find the current latitude
     const currentLatitude = this.currentLatitude(startRow);
     // First, place a tile -- you've only gotten to this point if you can place one
-    this.worldMap[startRow][startCol] = new Tile(terrain, startRow, startCol, this);
+    const tile = new Tile(terrain, startRow, startCol, this);
+    this.worldMap[startRow][startCol] = tile;
     // Render the tile onto the map
-    this.worldMap[startRow][startCol].render();
+    this.renderer.render(tile);
     // Propagate the terrain or choose a new one
     const nextTerrain = this.chooseNextTerrain(currentLatitude, terrain);
     // Choose a new starting direction
@@ -155,7 +164,7 @@ export class World {
         }
       } else {
         do {
-          nextTerrain = this.terrainList[randRange(0, this.terrainList.length - 1)];
+          nextTerrain = terrainList[randRange(0, terrainList.length - 1)];
         } while (
           currentLatitude < nextTerrain.latitudeThreshold.min ||
           currentLatitude > nextTerrain.latitudeThreshold.max
@@ -186,7 +195,7 @@ export class World {
   private chooseAnyTile(currentLatitude: number) {
     let tile;
     do {
-      tile = this.terrainList[randRange(0, this.terrainList.length - 1)];
+      tile = terrainList[randRange(0, terrainList.length - 1)];
     } while (currentLatitude < tile.latitudeThreshold.min || currentLatitude > tile.latitudeThreshold.max);
     return tile;
   }
