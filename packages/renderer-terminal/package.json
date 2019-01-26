@@ -27,6 +27,7 @@
     "url": "git+https://github.com/katsanva/mapgen.git"
   },
   "scripts": {
+    "example": "node -r ts-node/register src/example.ts",
     "prepublish": "tsc --declaration",
     "test": "echo \"Error: run tests from root\" && exit 1"
   },
@@ -36,10 +37,14 @@
   "homepage": "https://github.com/katsanva/mapgen#readme",
   "devDependencies": {
     "@mapgen/mapgen": "^1.0.2",
+    "@types/color-diff": "^1.1.0",
     "terminal-kit": "^1.26.10"
   },
   "peerDependencies": {
     "@mapgen/mapgen": "*",
     "terminal-kit": "^1.26.10"
+  },
+  "dependencies": {
+    "color-diff": "^1.1.0"
   }
 }
