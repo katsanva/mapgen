@@ -8,4 +8,5 @@ export interface IRenderer {
 
   render(tile: Tile): void;
   clear(): void;
+  sync(): void;
 }

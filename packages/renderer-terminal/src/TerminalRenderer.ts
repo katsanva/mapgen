@@ -46,6 +46,10 @@ export class TerminalRenderer implements IRenderer {
     sb.fill({ attr: { color, bgColor: color } });
     sb.draw();
   }
+
+  public sync() {
+    return;
+  }
 }
 
 export { EuclideanColorResolver, CIEDE2000ColorResolver };

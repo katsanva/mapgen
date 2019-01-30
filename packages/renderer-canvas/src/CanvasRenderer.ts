@@ -37,4 +37,8 @@ export class CanvasRenderer implements IRenderer {
     this.output.fillStyle = 'violet';
     this.output.fillRect(0, 0, this.target.height, this.target.width);
   }
+
+  public sync() {
+    return;
+  }
 }

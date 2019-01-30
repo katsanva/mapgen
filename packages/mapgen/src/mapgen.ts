@@ -12,4 +12,6 @@ export function mapgen(renderer: IRenderer) {
   }
 
   worldMap.fill();
+
+  renderer.sync();
 }

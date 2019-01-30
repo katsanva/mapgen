@@ -1,5 +1,6 @@
 import { BaseColorResolver } from './BaseColorResolver';
 import { IRGBColor } from '../interfaces/IRGBColor';
+import { hexToRGB } from './hexToRGB';
 
 export class EuclideanColorResolver extends BaseColorResolver {
   private static findDistance(c1: IRGBColor, c2: IRGBColor) {
@@ -21,7 +22,7 @@ export class EuclideanColorResolver extends BaseColorResolver {
       return found.colorId;
     }
 
-    const rgbColor = this.hexToRGB(hex);
+    const rgbColor = hexToRGB(hex);
 
     const res = this.colors.map((value) => ({
       color: value.rgb,

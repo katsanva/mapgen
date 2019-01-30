@@ -1,0 +1,47 @@
+{
+  "name": "renderer-stream",
+  "version": "1.0.0",
+  "description": "Wrateble stream renderer for pixel-art map generator mapgen",
+  "keywords": [
+    "terminal",
+    "map",
+    "generator",
+    "pixel-art",
+    "renderer"
+  ],
+  "author": "katsanva <this.is.ftm@gmail.com>",
+  "homepage": "https://github.com/katsanva/mapgen#readme",
+  "license": "ISC",
+  "main": "lib/renderer-stream.js",
+  "directories": {
+    "lib": "lib",
+    "test": "__tests__"
+  },
+  "files": [
+    "lib"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/katsanva/mapgen.git"
+  },
+  "scripts": {
+    "example": "node -r ts-node/register src/example.ts",
+    "prepublish": "tsc --declaration",
+    "test": "echo \"Error: run tests from root\" && exit 1"
+  },
+  "bugs": {
+    "url": "https://github.com/katsanva/mapgen/issues"
+  },
+  "devDependencies": {
+    "@mapgen/mapgen": "^1.1.1",
+    "@mapgen/renderer-terminal": "^1.1.1",
+    "@types/pngjs": "^3.3.2"
+  },
+  "peerDependencies": {
+    "@mapgen/mapgen": "*"
+  },
+  "dependencies": {
+    "pngjs": "^3.3.3",
+    "@mapgen/renderer-terminal": "^1.1.1"
+  }
+}

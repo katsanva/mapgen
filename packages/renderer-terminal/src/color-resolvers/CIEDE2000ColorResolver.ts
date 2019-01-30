@@ -1,5 +1,6 @@
 import { BaseColorResolver } from './BaseColorResolver';
 import { RGBColor, closest } from 'color-diff';
+import { hexToRGB } from './hexToRGB';
 
 export class CIEDE2000ColorResolver extends BaseColorResolver {
   private palette: RGBColor[];
@@ -25,15 +26,15 @@ export class CIEDE2000ColorResolver extends BaseColorResolver {
       return found.colorId;
     }
 
-    const color = this.hexToRGBCD(hex);
+    const color = this.hexToRGB(hex);
 
     const closestColor = closest(color, this.palette);
 
     return this.palette.indexOf(closestColor);
   }
 
-  private hexToRGBCD(hex: string): RGBColor {
-    const t = super.hexToRGB(hex);
+  private hexToRGB(hex: string): RGBColor {
+    const t = hexToRGB(hex);
 
     return {
       R: t.r,
