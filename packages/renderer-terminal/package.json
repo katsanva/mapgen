@@ -1,17 +1,17 @@
 {
   "name": "@mapgen/renderer-terminal",
-  "version": "1.1.1",
   "description": "Terminal renderer for pixel-art map generator mapgen",
-  "keywords": [
-    "terminal",
-    "map",
-    "generator",
-    "pixel-art",
-    "renderer"
-  ],
+  "version": "1.1.1",
   "author": "katsanva <this.is.ftm@gmail.com>",
-  "license": "MIT",
-  "main": "lib/TerminalRenderer.js",
+  "bugs": "https://github.com/katsanva/mapgen/issues",
+  "dependencies": {
+    "color-diff": "1.1.0"
+  },
+  "devDependencies": {
+    "@mapgen/mapgen": "*",
+    "@types/color-diff": "1.1.0",
+    "terminal-kit": "1.26.10"
+  },
   "directories": {
     "lib": "lib",
     "test": "__tests__"
@@ -19,32 +19,27 @@
   "files": [
     "lib"
   ],
+  "homepage": "https://github.com/katsanva/mapgen#readme",
+  "keywords": [
+    "generator",
+    "map",
+    "pixel-art",
+    "renderer",
+    "terminal"
+  ],
+  "license": "MIT",
+  "main": "lib/TerminalRenderer.js",
+  "peerDependencies": {
+    "@mapgen/mapgen": "*",
+    "terminal-kit": "1.26.10"
+  },
   "publishConfig": {
     "access": "public"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/katsanva/mapgen.git"
-  },
+  "repository": "katsanva/mapgen.git",
   "scripts": {
     "example": "node -r ts-node/register src/example.ts",
     "prepublish": "tsc --declaration",
     "test": "echo \"Error: run tests from root\" && exit 1"
-  },
-  "bugs": {
-    "url": "https://github.com/katsanva/mapgen/issues"
-  },
-  "homepage": "https://github.com/katsanva/mapgen#readme",
-  "devDependencies": {
-    "@mapgen/mapgen": "^1.1.1",
-    "@types/color-diff": "^1.1.0",
-    "terminal-kit": "^1.26.10"
-  },
-  "peerDependencies": {
-    "@mapgen/mapgen": "*",
-    "terminal-kit": "^1.26.10"
-  },
-  "dependencies": {
-    "color-diff": "^1.1.0"
   }
 }

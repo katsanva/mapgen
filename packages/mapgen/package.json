@@ -1,15 +1,9 @@
 {
   "name": "@mapgen/mapgen",
-  "version": "1.1.1",
   "description": "A pixel-art map generator",
-  "keywords": [
-    "map",
-    "generator",
-    "pixel-art"
-  ],
+  "version": "1.1.1",
   "author": "katsanva <this.is.ftm@gmail.com>",
-  "license": "MIT",
-  "main": "lib/mapgen.js",
+  "bugs": "https://github.com/katsanva/mapgen/issues",
   "directories": {
     "lib": "lib",
     "test": "__tests__"
@@ -17,19 +11,20 @@
   "files": [
     "lib"
   ],
+  "homepage": "https://github.com/katsanva/mapgen#readme",
+  "keywords": [
+    "generator",
+    "map",
+    "pixel-art"
+  ],
+  "license": "MIT",
+  "main": "lib/mapgen.js",
   "publishConfig": {
     "access": "public"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/katsanva/mapgen.git"
-  },
+  "repository": "katsanva/mapgen.git",
   "scripts": {
     "prepublish": "tsc --declaration",
     "test": "echo \"Error: run tests from root\" && exit 1"
-  },
-  "bugs": {
-    "url": "https://github.com/katsanva/mapgen/issues"
-  },
-  "homepage": "https://github.com/katsanva/mapgen#readme"
+  }
 }
